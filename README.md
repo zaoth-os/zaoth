@@ -36,7 +36,7 @@ To rebase an existing Fedora Atomic (e.g., Silverblue, Kinoite, Sway Spin) insta
 Rebase to the unverified registry to import the required signing keys and local security policies:
 
 ```bash
-rpm-ostree rebase ostree-unverified-registry:ghcr.io/fyllus/bluehat:latest
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/USER/IMAGE:latest
 systemctl reboot
 
 ```
@@ -46,7 +46,7 @@ systemctl reboot
 After rebooting, lock the system deployment down by rebasing to the cryptographically signed image stream:
 
 ```bash
-rpm-ostree rebase ostree-image-signed:docker://ghcr.io/fyllus/bluehat:latest
+rpm-ostree rebase ostree-image-signed:docker://ghcr.io/USER/IMAGE:latest
 systemctl reboot
 
 ```
@@ -60,7 +60,7 @@ systemctl reboot
 Container images are signed using [Sigstore](https://www.sigstore.dev/) and [Cosign](https://github.com/sigstore/cosign). To manually audit and verify the integrity of the image signature, pull the public key from this repository and run:
 
 ```bash
-cosign verify --key cosign.pub ghcr.io/fyllus/bluehat
+cosign verify --key cosign.pub ghcr.io/USER/IMAGE
 
 ```
 
