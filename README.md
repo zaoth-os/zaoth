@@ -1,15 +1,7 @@
-<<<<<<< HEAD
+---
+
 <h5 align="center">Note: This is a personal project.</h5>
 
-<p align="center">
-  <a href="https://github.com/fyllus/bluehat">
-    <img src="https://github.com/fyllus/bluehat/blob/main/files/system/usr/share/plymouth/themes/spinner/watermark.png" href="[https://github.com/fyllus/bluehat](https://github.com/fyllus/bluehat)" width=180 />
-  </a>
-</p>
-
-=======
-<h5 align="center">Note: For now, this image is for personal study and is purely experimental.</h5>
->>>>>>> refs/remotes/origin/main
 ---
 
 [![bluebuild build badge](https://github.com/fyllus/bluehat/actions/workflows/build.yml/badge.svg)](https://github.com/fyllus/bluehat/actions/workflows/build.yml)
@@ -24,10 +16,8 @@ This image is an independent, personal project designed to be lightweight, pragm
 
 * **Minimalist TWM Stack:** Pre-configured Sway environment leveraging resource-efficient tools like `i3blocks` and `wmenu`, alongside custom scripts located in `/usr/bin`.
 * **Modular Configuration Architecture:** Completely decoupled keybindings, system calls, and theme variables to prevent system breakage and allow safe, painless user overrides.
-* **Integrated CLI Orchestration:** Built-in shell-based tools featuring custom fuzzy finders (`sway-menu`, `sway-wall`) for application execution, scratchpads, interactive wallpaper selection, and power management.
+* **Integrated CLI Orchestration:** Built-in shell-based tools featuring custom fuzzy finders (`bluemenu`, `bluewall`) for application execution, scratchpads, interactive wallpaper selection, and power management.
 * **Atomic Reliability:** Built via BlueBuild, ensuring immutable root-filesystem rollbacks, seamless updates, and container-native delivery.
-
-For detailed documentation, architectural layouts, and configuration guides, [visit the BlueHat Wiki](https://github.com/fyllus/bluehat/wiki).
 
 ---
 
@@ -40,7 +30,7 @@ To rebase an existing Fedora Atomic (e.g., Silverblue, Kinoite, Sway Spin) insta
 Rebase to the unverified registry to import the required signing keys and local security policies:
 
 ```bash
-rpm-ostree rebase ostree-unverified-registry:ghcr.io/zaoth-os/bluehat:latest
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/zaoth-os/zaoth:latest
 systemctl reboot
 
 ```
@@ -50,32 +40,9 @@ systemctl reboot
 After rebooting, lock the system deployment down by rebasing to the cryptographically signed image stream:
 
 ```bash
-rpm-ostree rebase ostree-image-signed:docker://ghcr.io/zaoth-os/bluehat:latest
+rpm-ostree rebase ostree-image-signed:docker://ghcr.io/zaoth-os/zaoth:latest
 systemctl reboot
 
 ```
 
 > **Note:** The `latest` tag always tracks the stable core version specified within the system build recipe. Major upstream Fedora version upgrades will never occur automatically without user intervention.
-
----
-
-## Verification
-
-Container images are signed using [Sigstore](https://www.sigstore.dev/) and [Cosign](https://github.com/sigstore/cosign). To manually audit and verify the integrity of the image signature, pull the public key from this repository and run:
-
-```bash
-cosign verify --key cosign.pub ghcr.io/zaoth-os/bluehat
-
-```
-
----
-
-## Local ISO Generation
-
-Offline installer ISOs cannot be hosted directly on GitHub due to size limitations. To compile your own bootable installation media locally, follow the official guidelines:
-
-```bash
-# Reference deployment guidelines at:
-# [https://blue-build.org/how-to/generate-iso/](https://blue-build.org/how-to/generate-iso/)
-
-```
