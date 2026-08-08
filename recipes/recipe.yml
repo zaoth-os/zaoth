@@ -20,7 +20,7 @@ modules:
   - type: dnf
     repos:
       copr:
-        #- swayfx/swayfx
+        - swayfx/swayfx
         - tofik/nwg-shell
         #- lihaohong/yazi
         - che/zed
@@ -28,11 +28,11 @@ modules:
         - atim/nushell
 
     install:
-      
+
       packages:
         - install-weak-deps: false
           packages:
-              
+
             #Core Dev & Container Stack
             - git
             - podman-compose
@@ -52,7 +52,7 @@ modules:
             - wayland-protocols-devel
             - libxkbcommon-devel
             - scdoc
-  
+
             # Terminal & CLI
             - greetd
             - tuigreet
@@ -71,16 +71,17 @@ modules:
             - poppler-utils
             - 7zip
             - i3blocks
-  
-  
+
+
             # Window Manager & Display Server
-            - sway
+            - swayfx
             - nwg-look
             - gtklock
             - dialog
             - zenity
-  
-  
+            - cage
+
+
             # Visual & GUI Apps
             - steam
             - zed
@@ -88,10 +89,10 @@ modules:
             - inkscape
             - godot
             - falkon
-  
+
             # Core LXQt
             - lxqt-policykit
-  
+
             # Network & Hardware Management
             - NetworkManager-wifi
             - iw
