@@ -54,8 +54,8 @@ modules:
             - scdoc
   
             # Terminal & CLI
-            - sddm-themes
-            - sddm
+            - greetd
+            - tuigreet
             - grim
             - slurp
             - Thunar
