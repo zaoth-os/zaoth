@@ -6,7 +6,7 @@
 
 ---
 
-[![bluebuild build badge](https://github.com/fyllus/zaoth-os/actions/workflows/build.yml/badge.svg)](https://github.com/zaoth-os/zaoth/actions/workflows/build.yml)[![Dependabot Updates](https://github.com/zaoth-os/zaoth/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/zaoth-os/zaoth/actions/workflows/dependabot/dependabot-updates)
+[![bluebuild](https://github.com/zaoth-os/zaoth/actions/workflows/build.yml/badge.svg)](https://github.com/zaoth-os/zaoth/actions/workflows/build.yml)[![Dependabot Updates](https://github.com/zaoth-os/zaoth/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/zaoth-os/zaoth/actions/workflows/dependabot/dependabot-updates)
 
 A minimalist, performance-oriented custom Fedora Atomic image built on top of the uBlue (`base-main`) ecosystem.
 
