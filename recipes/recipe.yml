@@ -20,14 +20,12 @@ modules:
   - type: dnf
     repos:
       copr:
-        - swayfx/swayfx
+        #- swayfx/swayfx
         - tofik/nwg-shell
-        - lihaohong/yazi
+        #- lihaohong/yazi
         - che/zed
         - zeno/scrcpy
         - atim/nushell
-      files:
-        - https://repo.librewolf.net/librewolf.repo
 
     install:
       packages:
@@ -52,11 +50,12 @@ modules:
         - scdoc
 
         # Terminal & CLI
-        - greetd
-        - tuigreet      
+        - lightdm
+        - lightdm-gtk
         - grim
         - slurp
-        - yazi
+        - Thunar
+        - ranger
         - dunst
         - micro
         - btop
@@ -71,7 +70,7 @@ modules:
 
 
         # Window Manager & Display Server
-        - swayfx
+        - sway
         - nwg-look
         - gtklock
         - dialog
@@ -84,7 +83,7 @@ modules:
         - gimp
         - inkscape
         - godot
-        - librewolf
+        - falkon
 
         # Core LXQt
         - lxqt-policykit
