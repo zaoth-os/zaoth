@@ -28,72 +28,73 @@ modules:
         - atim/nushell
 
     install:
-      packages:
-        #Core Dev & Container Stack
-        - git
-        - podman-compose
-        - podman
-        - openssh-clients
-        - cronie
-        - gum
-        - scrcpy
-        - android-tools
-        - nushell
-        - meson
-        - ninja-build
-        - pkgconf-pkg-config
-        - cairo-devel
-        - pango-devel
-        - wayland-devel
-        - wayland-protocols-devel
-        - libxkbcommon-devel
-        - scdoc
-
-        # Terminal & CLI
-        - lightdm
-        - lightdm-gtk
-        - grim
-        - slurp
-        - Thunar
-        - ranger
-        - dunst
-        - micro
-        - btop
-        - fzf
-        - chafa
-        - bat
-        - ImageMagick
-        - ffmpegthumbnailer
-        - poppler-utils
-        - 7zip
-        - i3blocks
-
-
-        # Window Manager & Display Server
-        - sway
-        - nwg-look
-        - gtklock
-        - dialog
-        - zenity
-
-
-        # Visual & GUI Apps
-        - steam
-        - zed
-        - gimp
-        - inkscape
-        - godot
-        - falkon
-
-        # Core LXQt
-        - lxqt-policykit
-
-        # Network & Hardware Management
-        - NetworkManager-wifi
-        - iw
-        - bluez
-        - pamixer
-        - brightnessctl
+      - install-weak-deps: false
+        packages:
+          #Core Dev & Container Stack
+          - git
+          - podman-compose
+          - podman
+          - openssh-clients
+          - cronie
+          - gum
+          - scrcpy
+          - android-tools
+          - nushell
+          - meson
+          - ninja-build
+          - pkgconf-pkg-config
+          - cairo-devel
+          - pango-devel
+          - wayland-devel
+          - wayland-protocols-devel
+          - libxkbcommon-devel
+          - scdoc
+          
+          # Terminal & CLI
+          - sddm-themes
+          - sddm
+          - grim
+          - slurp
+          - Thunar
+          - ranger
+          - dunst
+          - micro
+          - btop
+          - fzf
+          - chafa
+          - bat
+          - ImageMagick
+          - ffmpegthumbnailer
+          - poppler-utils
+          - 7zip
+          - i3blocks
+    
+    
+          # Window Manager & Display Server
+          - sway
+          - nwg-look
+          - gtklock
+          - dialog
+          - zenity
+    
+    
+          # Visual & GUI Apps
+          - steam
+          - zed
+          - gimp
+          - inkscape
+          - godot
+          - falkon
+    
+          # Core LXQt
+          - lxqt-policykit
+    
+          # Network & Hardware Management
+          - NetworkManager-wifi
+          - iw
+          - bluez
+          - pamixer
+          - brightnessctl
 
   # Last Custom Scripts
   - type: script
