@@ -30,75 +30,75 @@ modules:
     install:
 
       packages:
-        - install-weak-deps: false
-          packages:
 
-            #Core Dev & Container Stack
-            - git
-            - podman-compose
-            - podman
-            - openssh-clients
-            - cronie
-            - gum
-            - scrcpy
-            - android-tools
-            - nushell
-            - meson
-            - ninja-build
-            - pkgconf-pkg-config
-            - cairo-devel
-            - pango-devel
-            - wayland-devel
-            - wayland-protocols-devel
-            - libxkbcommon-devel
-            - scdoc
+        #Core Dev & Container Stack
+        - git
+        - podman-compose
+        - podman
+        - openssh-clients
+        - cronie
+        - gum
+        - scrcpy
+        - android-tools
+        - nushell
+        - meson
+        - ninja-build
+        - pkgconf-pkg-config
+        - cairo-devel
+        - pango-devel
+        - wayland-devel
+        - wayland-protocols-devel
+        - libxkbcommon-devel
+        - scdoc
 
-            # Terminal & CLI
-            - greetd
-            - tuigreet
-            - grim
-            - slurp
-            - Thunar
-            - ranger
-            - dunst
-            - micro
-            - btop
-            - fzf
-            - chafa
-            - bat
-            - ImageMagick
-            - ffmpegthumbnailer
-            - poppler-utils
-            - 7zip
-            - i3blocks
+        # Terminal & CLI
+        - greetd
+        - tuigreet
+        - grim
+        - slurp
+        - Thunar
+        - ranger
+        - dunst
+        - micro
+        - btop
+        - fzf
+        - chafa
+        - bat
+        - ImageMagick
+        - ffmpegthumbnailer
+        - poppler-utils
+        - 7zip
+        - i3blocks
 
 
-            # Window Manager & Display Server
-            - swayfx
-            - nwg-look
-            - gtklock
-            - dialog
-            - zenity
-            - cage
+        # Window Manager & Display Server
+        - swayfx
+        - nwg-look
+        - gtklock
+        - dialog
+        - zenity
+        - cage
 
 
-            # Visual & GUI Apps
-            - steam
-            - zed
-            - gimp
-            - inkscape
-            - godot
-            - falkon
+        # Visual & GUI Apps
+        - steam
+        - zed
+        - gimp
+        - inkscape
+        - godot
+        - falkon
 
-            # Core LXQt
-            - lxqt-policykit
+        # Core LXQt
+        - lxqt-policykit
 
-            # Network & Hardware Management
-            - NetworkManager-wifi
-            - iw
-            - bluez
-            - pamixer
-            - brightnessctl
+        # Network & Hardware Management
+        - NetworkManager-wifi
+        - iw
+        - bluez
+        - pamixer
+        - brightnessctl
+
+      install-weak-deps: false
 
   # Last Custom Scripts
   - type: script
