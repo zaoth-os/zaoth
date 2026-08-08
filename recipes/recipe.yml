@@ -20,7 +20,7 @@ modules:
   - type: dnf
     repos:
       copr:
-        #- swayfx/swayfx
+        - swayfx/swayfx
         - tofik/nwg-shell
         #- lihaohong/yazi
         - che/zed
@@ -28,7 +28,9 @@ modules:
         - atim/nushell
 
     install:
+
       packages:
+
         #Core Dev & Container Stack
         - git
         - podman-compose
@@ -50,8 +52,8 @@ modules:
         - scdoc
 
         # Terminal & CLI
-        - lightdm
-        - lightdm-gtk
+        - greetd
+        - tuigreet
         - grim
         - slurp
         - Thunar
@@ -70,11 +72,12 @@ modules:
 
 
         # Window Manager & Display Server
-        - sway
+        - swayfx
         - nwg-look
         - gtklock
         - dialog
         - zenity
+        - cage
 
 
         # Visual & GUI Apps
@@ -94,6 +97,8 @@ modules:
         - bluez
         - pamixer
         - brightnessctl
+
+      install-weak-deps: false
 
   # Last Custom Scripts
   - type: script
