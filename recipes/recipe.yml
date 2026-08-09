@@ -40,7 +40,7 @@ modules:
         - ffmpegthumbnailer
         - poppler-utils
         - 7zip
-      install-weak-deps: false
+      #install-weak-deps: true
 
   - type: dnf
     install:
@@ -58,7 +58,7 @@ modules:
         - zenity
         - dialog
 
-      install-weak-deps: true
+      #install-weak-deps: true
 
   - type: dnf
     install:
@@ -71,7 +71,7 @@ modules:
         - godot
         - falkon
 
-      install-weak-deps: false
+      #install-weak-deps: false
 
   - type: dnf
     install:
@@ -83,7 +83,7 @@ modules:
         - iw
         - bluez
 
-      install-weak-deps: true
+      #install-weak-deps: true
 
   - type: dnf
     install:
