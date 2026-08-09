@@ -42,11 +42,11 @@ vermuz_install() {
     local default_provider="github.com"
     local repo_user="$1"
     local repo_name="$2"
-    local repo_provider="${1:-$default_provider}"
+    local repo_provider="${3:-$default_provider}"
     echo "Creating temp download tree..."
     local download_src="/tmp/vermuz/download/$repo_name"
     echo "Cloning repository"
-    git clone https://$repo_provider/$repo_user/$repo_name.git $download_src
+    git clone https://$repo_provider/$repo_user/$repo_name $download_src
     echo "Start to setup"
     cd $download_src || echo "Repo tree not found.."
     source $download_src/setup
