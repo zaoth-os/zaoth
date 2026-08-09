@@ -5,7 +5,7 @@ set {
 
     $DEFAULT_TERM   	exec footclient --app-id=Terminal --title=Terminal
 	$DEFAULT_MENU  	    exec $__WMENU
-    $DEFAULT_FILES  	exec footclient --app-id=Yazi --title=Yazi -e yazi
+    $DEFAULT_FILES  	exec footclient --app-id=Ranger --title=Ranger -e ranger
     $DEFAULT_RELOAD 	exec swaymsg reload
     $DEFAULT_WALLPAPER 	exec footclient --app-id=Wallpaper --title=Sway-Wallpaper -e $__BGSELEC
 }

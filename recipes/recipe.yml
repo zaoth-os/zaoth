@@ -67,6 +67,7 @@ modules:
         - scdoc
         - zenity
         - dialog
+
       install-weak-deps: false
 
   - type: dnf
@@ -79,6 +80,7 @@ modules:
         - inkscape
         - godot
         - falkon
+
       install-weak-deps: false
 
   - type: dnf
@@ -92,15 +94,16 @@ modules:
         - bluez
         - pamixer
         - brightnessctl
-      #install-weak-deps: false
+        - gtklock
+        - nwg-look
+
+      install-weak-deps: false
 
   - type: dnf
     install:
       packages:
         # Window Manager & Display Server
         - swayfx
-        - nwg-look
-        - gtklock
         - Thunar
         - greetd
         - tuigreet

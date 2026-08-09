@@ -1,10 +1,10 @@
 set {
     $open_application_A exec which NullApp
-    $open_application_B exec librewolf
+    $open_application_B exec falkon
     $open_application_C exec zed
     $open_application_D exec which NullApp
     $open_application_E exec which NullApp
-    $open_application_F exec yazi
+    $open_application_F exec Thunar
     $open_application_G exec godot
     $open_application_H exec which NullApp
     $open_application_I exec which NullApp
