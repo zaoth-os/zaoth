@@ -88,12 +88,6 @@ modules:
       packages:
          # Core LXQt
         - lxqt-policykit
-        # Network & Hardware Management
-        - NetworkManager-wifi
-        - iw
-        - bluez
-        - pamixer
-        - brightnessctl
         - gtklock
         - nwg-look
 
@@ -102,7 +96,12 @@ modules:
   - type: dnf
     install:
       packages:
-        # Window Manager & Display Server
+        # Desktop
+        - NetworkManager-wifi
+        - iw
+        - bluez
+        - pamixer
+        - brightnessctl
         - swayfx
         - Thunar
         - greetd
