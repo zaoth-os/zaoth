@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+
+modules:
+  - type: dnf
+    install:
+      packages:
+        - grim
+        - slurp
+        - micro
+        - zoxide
+        - scdoc
+        - ripgrep
+        - find
+        - btop
+        - fzf
+        - chafa
+        - bat
+        - ImageMagick
+        - ffmpegthumbnailer
+        - poppler-utils
+        - 7zip
+      install-weak-deps: false

@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+
+modules:
+  - type: dnf
+    repos:
+      copr:
+        - swayfx/swayfx
+        - tofik/nwg-shell
+        - lihaohong/yazi
+        - che/zed
+        - zeno/scrcpy
+        - atim/nushell

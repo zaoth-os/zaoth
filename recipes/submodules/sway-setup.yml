@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+
+modules:
+  - type: dnf
+    install:
+      packages:
+        # Window Manager & Display Server
+        - swayfx
+        - Thunar
+        - greetd
+        - tuigreet
+        - ranger
+        - dunst
+        - i3blocks
+        - pamixer
+        - brightnessctl
+        - gtklock
+        - nwg-look
+
+      #install-weak-deps: false
