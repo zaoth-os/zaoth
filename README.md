@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/wayblueorg/wayblue">
-    <img src="https://github.com/fyllus/sharefile/blob/main/share/plymouth/themes/spinner/watermark.png" href="[https://github.com/zaoth-os/zaoth](https://github.com/zaoth-os/zaoth)" />
+    <img src="https://github.com/zaoth-os/zaoth-share/blob/main/share/plymouth/themes/spinner/watermark.png" href="[https://github.com/zaoth-os/zaoth](https://github.com/zaoth-os/zaoth)" />
   </a>
 </p>
 
