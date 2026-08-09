@@ -37,21 +37,75 @@ FULL_VERSION="${FULL_VERSION}"
 EOF
     echo "Version: ${FULL_VERSION}"
 }
+vermuz_log() {
+    local opt="$1"
+    shift
+    case "$opt" in
+        --error) echo "ERROR: $@" >&2;;
+        --warn) echo "WARNING: $@" >&2;;
+        --info) echo "INFO: $@" >&2;;
+    esac
+
+}
+vermuz_check() {
+    local opt="$1"
+    shift
+    case "$opt" in
+        --args-missing)
+        if [[ -z "${from_src:-}" ]]; then
+            vermuz_log --error "config missing -> 'from_src'"
+            return 1
+        fi
+
+        if [[ -z "${to_src:-}" ]]; then
+            vermuz_log --error "config missing -> 'to_src'"
+            return 1
+        fi
+        return 0
+        ;;
+        --config-missing)
+        if [[ ! -f "$download_src/setup" ]]; then
+            vermuz_log --error "setup file not found -> '$download_src/setup'"
+            return 1
+        fi
+        return 0
+        ;;
+    esac
+}
 
 vermuz_install() {
-    local default_provider="github.com"
-    local repo_user="$1"
-    local repo_name="$2"
-    local repo_provider="${3:-$default_provider}"
-    echo "Creating temp download tree..."
-    local download_src="/tmp/vermuz/download/$repo_name"
-    echo "Cloning repository"
-    git clone https://$repo_provider/$repo_user/$repo_name $download_src
-    echo "Start to setup"
-    cd $download_src || echo "Repo tree not found.."
-    source $download_src/setup
-    mkdir -p $_TO
-    cp -r $_FROM $_TO || echo "Error to copy files from $_FROM $_TO"
+    default_provider="github.com"
+    repo_user="$1"
+    repo_name="$2"
+    repo_provider="${3:-$default_provider}"
+
+    vermuz_log --info "Creating temp download tree..."
+    download_src="/tmp/vermuz/download/$repo_name"
+
+    vermuz_log --info "Cloning install files.."
+    rm -rf "$download_src"
+    git clone "https://$repo_provider/$repo_user/$repo_name" "$download_src"
+
+    vermuz_log --info "Starting to setup..."
+    if cd "$download_src"; then
+        if vermuz_check --config; then
+            source "$download_src/setup"
+            if vermuz_check --params; then
+                mkdir -p $to_src
+                if ! cp -a "$from_src"/. "$to_src"/; then
+                    vermuz_log --error "unable to copy files from $from_src to $to_src"
+                    return 1
+                fi
+            else
+                return 1
+            fi
+        else
+            return 1
+        fi
+    else
+        vermuz_log --error "$download_src not found.."
+        return 1
+    fi
 }
 
 main () {
