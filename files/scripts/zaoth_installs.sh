@@ -3,12 +3,12 @@ set -oeux pipefail
 
 git clone https://github.com/zaoth-os/zaoth-share.git
 cd zaoth-share
-bash ./install
+./install
 cd ..
 rm -rf zaoth-share
 
 git clone https://github.com/zaoth-os/zaoth-lib.git
 cd zaoth-lib
-bash ./install
+./install
 cd ..
 rm -rf zaoth-lib

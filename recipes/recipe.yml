@@ -7,106 +7,11 @@ base-image: ghcr.io/ublue-os/base-main
 image-version: latest
 
 modules:
-  - type: files
-    files:
-      - source: system
-        destination: /
-
-  - type: script
-    scripts:
-      - zaoth_installs.sh
-
-  - type: dnf
-    repos:
-      copr:
-        - swayfx/swayfx
-        - tofik/nwg-shell
-        #- lihaohong/yazi
-        - che/zed
-        - zeno/scrcpy
-        - atim/nushell
-
-  - type: dnf
-    install:
-      packages:
-        - grim
-        - slurp
-        - micro
-        - btop
-        - fzf
-        - chafa
-        - bat
-        - ImageMagick
-        - ffmpegthumbnailer
-        - poppler-utils
-        - 7zip
-      #install-weak-deps: true
-
-  - type: dnf
-    install:
-      packages:
-         #Core Dev & Container Stack
-        - git
-        - podman-compose
-        - podman
-        - openssh-clients
-        - cronie
-        - gum
-        - scrcpy
-        - android-tools
-        - nushell
-        - zenity
-        - dialog
-
-      #install-weak-deps: true
-
-  - type: dnf
-    install:
-      packages:
-        # Visual & GUI Apps
-        - steam
-        - zed
-        - gimp
-        - inkscape
-        - godot
-        - falkon
-
-      #install-weak-deps: false
-
-  - type: dnf
-    install:
-      packages:
-         # Core LXQt
-        - lxqt-policykit
-        # Network & Hardware Management
-        - NetworkManager-wifi
-        - iw
-        - bluez
-
-      #install-weak-deps: true
-
-  - type: dnf
-    install:
-      packages:
-        # Window Manager & Display Server
-        - swayfx
-        - Thunar
-        - greetd
-        - tuigreet
-        - ranger
-        - dunst
-        - i3blocks
-        - pamixer
-        - brightnessctl
-        - gtklock
-        - nwg-look
-
-      #install-weak-deps: false
-
-  # Last Custom Scripts
-  - type: script
-    scripts:
-      - greeter_dm.sh
-
-  # Initramfs rebuild
-  - type: initramfs
+  - from-file: submodules/startup-setup.yml
+  - from-file: submodules/repositories.yml
+  - from-file: submodules/terminal-utils.yml
+  - from-file: submodules/devel-utils.yml
+  - from-file: submodules/desktop-apps.yml
+  - from-file: submodules/devices-setup.yml
+  - from-file: submodules/sway-setup.yml
+  - from-file: submodules/endown-setup.yml
