@@ -14,8 +14,7 @@ modules:
 
   - type: script
     scripts:
-      - install_bashlib.sh
-      - install_sharefile.sh
+      - zaoth_installs.sh
 
   - type: dnf
     repos:
@@ -55,7 +54,7 @@ modules:
         - gum
         - scrcpy
         - android-tools
-        - nushell        
+        - nushell
         - zenity
         - dialog
 
@@ -82,7 +81,7 @@ modules:
         # Network & Hardware Management
         - NetworkManager-wifi
         - iw
-        - bluez       
+        - bluez
 
       install-weak-deps: true
 
