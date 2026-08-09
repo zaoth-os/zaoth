@@ -55,20 +55,11 @@ modules:
         - gum
         - scrcpy
         - android-tools
-        - nushell
-        - meson
-        - ninja-build
-        - pkgconf-pkg-config
-        - cairo-devel
-        - pango-devel
-        - wayland-devel
-        - wayland-protocols-devel
-        - libxkbcommon-devel
-        - scdoc
+        - nushell        
         - zenity
         - dialog
 
-      install-weak-deps: false
+      install-weak-deps: true
 
   - type: dnf
     install:
