@@ -73,38 +73,57 @@ vermuz_check() {
     esac
 }
 
+vermuz_unique_tmp() {
+    local tag="$(echo "$@ $(date '+%Y%m%d%H%M')" | md5sum | tr -d " -")"
+    local working="/tmp/vermuz/$tag"
+    vermuz_log --info "creating temp working tree..."
+    if [[ -d "$working" ]]; then
+        vermuz_log --warn "duplicate working tree -> $working"
+        rm -rf "$working"
+    fi
+    echo "$working"
+}
+
 vermuz_install() {
     default_provider="github.com"
     repo_user="$1"
     repo_name="$2"
     repo_provider="${3:-$default_provider}"
+    repo_url="https://$repo_provider/$repo_user/$repo_name"
+    download_src="$(vermuz_unique_tmp $repo_url)"
 
-    vermuz_log --info "Creating temp download tree..."
-    download_src="/tmp/vermuz/download/$repo_name"
-
-    vermuz_log --info "Cloning install files.."
-    rm -rf "$download_src"
-    git clone "https://$repo_provider/$repo_user/$repo_name" "$download_src"
-
-    vermuz_log --info "Starting to setup..."
-    if cd "$download_src"; then
-        if vermuz_check --config; then
-            source "$download_src/setup"
-            if vermuz_check --params; then
-                mkdir -p $to_src
-                if ! cp -a "$from_src"/. "$to_src"/; then
-                    vermuz_log --error "unable to copy files from $from_src to $to_src"
-                    return 1
-                fi
-            else
-                return 1
-            fi
-        else
-            return 1
-        fi
-    else
-        vermuz_log --error "$download_src not found.."
+    vermuz_log --info "cloning install files from -> $repo_url"
+    if ! git clone "$repo_url" "$download_src"; then
+        vermuz_log --error "unable to clone repository -> $repo_url"
         return 1
+    fi
+
+    vermuz_log --info "starting to setup at -> $download_src..."
+    if [[ ! -d "$download_src" ]]; then
+        vermuz_log --error "'$download_src' not found.."
+        return 1
+    fi
+    setup_file="$download_src/setup"
+    if [[ ! -f "$setup_file" ]]; then
+        vermuz_log --error "setup file not found -> '$setup_file'"
+        return 1
+    fi
+
+    vermuz_log --info "getting setup config from -> $setup_file"
+    source "$download_src/setup"
+    if ! vermuz_check --args-missing; then
+        return 1
+    fi
+
+    vermuz_log --info "starting to copy files from $from_src to $to_src..."
+    mkdir -p "$to_src"
+    if ! cp -a "$from_src"/. "$to_src"/; then
+        vermuz_log \
+            --error \
+            "unable to copy files from $from_src to $to_src"
+        return 1
+    else
+        vermuz_log --info "success to copy files from $from_src to $to_src"
     fi
 }
 
