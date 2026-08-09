@@ -55,20 +55,11 @@ modules:
         - gum
         - scrcpy
         - android-tools
-        - nushell
-        - meson
-        - ninja-build
-        - pkgconf-pkg-config
-        - cairo-devel
-        - pango-devel
-        - wayland-devel
-        - wayland-protocols-devel
-        - libxkbcommon-devel
-        - scdoc
+        - nushell        
         - zenity
         - dialog
 
-      install-weak-deps: false
+      install-weak-deps: true
 
   - type: dnf
     install:
@@ -88,20 +79,17 @@ modules:
       packages:
          # Core LXQt
         - lxqt-policykit
-        - gtklock
-        - nwg-look
+        # Network & Hardware Management
+        - NetworkManager-wifi
+        - iw
+        - bluez       
 
-      install-weak-deps: false
+      install-weak-deps: true
 
   - type: dnf
     install:
       packages:
-        # Desktop
-        - NetworkManager-wifi
-        - iw
-        - bluez
-        - pamixer
-        - brightnessctl
+        # Window Manager & Display Server
         - swayfx
         - Thunar
         - greetd
@@ -109,6 +97,10 @@ modules:
         - ranger
         - dunst
         - i3blocks
+        - pamixer
+        - brightnessctl
+        - gtklock
+        - nwg-look
 
       #install-weak-deps: false
 
