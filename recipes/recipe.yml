@@ -27,11 +27,26 @@ modules:
         - zeno/scrcpy
         - atim/nushell
 
+  - type: dnf
     install:
-
       packages:
+        - grim
+        - slurp
+        - micro
+        - btop
+        - fzf
+        - chafa
+        - bat
+        - ImageMagick
+        - ffmpegthumbnailer
+        - poppler-utils
+        - 7zip
+      install-weak-deps: false
 
-        #Core Dev & Container Stack
+  - type: dnf
+    install:
+      packages:
+         #Core Dev & Container Stack
         - git
         - podman-compose
         - podman
@@ -50,36 +65,14 @@ modules:
         - wayland-protocols-devel
         - libxkbcommon-devel
         - scdoc
-
-        # Terminal & CLI
-        - greetd
-        - tuigreet
-        - grim
-        - slurp
-        - Thunar
-        - ranger
-        - dunst
-        - micro
-        - btop
-        - fzf
-        - chafa
-        - bat
-        - ImageMagick
-        - ffmpegthumbnailer
-        - poppler-utils
-        - 7zip
-        - i3blocks
-
-
-        # Window Manager & Display Server
-        - swayfx
-        - nwg-look
-        - gtklock
-        - dialog
         - zenity
-        - cage
+        - dialog
 
+      install-weak-deps: false
 
+  - type: dnf
+    install:
+      packages:
         # Visual & GUI Apps
         - steam
         - zed
@@ -88,17 +81,37 @@ modules:
         - godot
         - falkon
 
-        # Core LXQt
-        - lxqt-policykit
+      install-weak-deps: false
 
+  - type: dnf
+    install:
+      packages:
+         # Core LXQt
+        - lxqt-policykit
         # Network & Hardware Management
         - NetworkManager-wifi
         - iw
         - bluez
         - pamixer
         - brightnessctl
+        - gtklock
+        - nwg-look
 
       install-weak-deps: false
+
+  - type: dnf
+    install:
+      packages:
+        # Window Manager & Display Server
+        - swayfx
+        - Thunar
+        - greetd
+        - tuigreet
+        - ranger
+        - dunst
+        - i3blocks
+
+      #install-weak-deps: false
 
   # Last Custom Scripts
   - type: script
