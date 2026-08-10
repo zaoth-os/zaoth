@@ -152,9 +152,18 @@ function vermuz_unique_tmp() {
     echo "$working"
 }
 
-function vermuz_install() {
+function vermuz_cleanup_install() {
+      if [[ -d "$download_src" ]];then
+        vermuz_log --info "cleaning install temp files.."
+        rm -rf "$download_src"
+    fi
+}
 
-    if [[ "$1" == "--no-deep" ]] && shift; deep=0 || deep=1
+function vermuz_install() {
+    case "$1" in
+        --no-deep) shift; deep=0;;
+        *) deep=1;;
+    esac
 
     default_provider="github.com"
     repo_user="$1"
@@ -172,43 +181,51 @@ function vermuz_install() {
     vermuz_log --info "starting to setup at -> $download_src..."
     if [[ ! -d "$download_src" ]]; then
         vermuz_log --error "'$download_src' not found.."
+        vermuz_cleanup_install
         return 1
     fi
     setup_file="$download_src/setup"
     if [[ ! -f "$setup_file" ]]; then
         vermuz_log --error "setup file not found -> '$setup_file'"
+        vermuz_cleanup_install
         return 1
     fi
 
     vermuz_log --info "getting setup config from -> $setup_file"
     source "$download_src/setup"
     if ! vermuz_check --args-missing; then
+        vermuz_cleanup_install
         return 1
     fi
-    if $deep;then
+    if (( $deep == 1 ));then
         vermuz_log --info "starting to copy files from $from_src to $to_src..."
         mkdir -p "$to_src"
 
-        if ! echo "testfile" >> "$to_src"/.testfile ; then
+        if ! echo "testfile" >> "$to_src"/.testfile >/dev/null; then
             vermuz_log --error "unable to continue operation.."
+            vermuz_cleanup_install
             return 1
         else
             if ! cp -a "$from_src"/. "$to_src"/; then
                 vermuz_log \
                     --error \
                     "unable to copy files from $from_src to $to_src"
+                vermuz_cleanup_install
                 return 1
             else
                 vermuz_log --info "success to deep install files from $from_src to $to_src"
             fi
         fi
     else
-        if exec "${custom:-}";then
+        if "${custom:-}";then
             vermuz_log --info "success to custom install.."
         else
-            vermuz_log --erro "unable to use custom install -> function missing"
+            vermuz_log --error "unable to use custom install -> function missing"
+            vermuz_cleanup_install
         fi
     fi
+
+
 }
 
 function main() {
