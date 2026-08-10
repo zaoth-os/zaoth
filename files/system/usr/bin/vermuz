@@ -154,6 +154,8 @@ function vermuz_unique_tmp() {
 
 function vermuz_install() {
 
+    if [[ "$1" == "--no-deep" ]] && shift; deep=0 || deep=1
+
     default_provider="github.com"
     repo_user="$1"
     repo_name="$2"
@@ -161,9 +163,9 @@ function vermuz_install() {
     repo_url="https://$repo_provider/$repo_user/$repo_name"
     download_src="$(vermuz_unique_tmp $repo_url)"
 
-    vermuz_log --info "cloning install files from -> $repo_url"
+    vermuz_log --info "installing from -> $repo_url"
     if ! git clone "$repo_url" "$download_src"; then
-        vermuz_log --error "unable to clone repository -> $repo_url"
+        vermuz_log --error "unable to clone -> $repo_url"
         return 1
     fi
 
@@ -183,7 +185,7 @@ function vermuz_install() {
     if ! vermuz_check --args-missing; then
         return 1
     fi
-    if [[ ! -z "${deep:-}" ]];then
+    if $deep;then
         vermuz_log --info "starting to copy files from $from_src to $to_src..."
         mkdir -p "$to_src"
 
