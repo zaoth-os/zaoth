@@ -4,17 +4,23 @@ modules:
   - type: dnf
     install:
       packages:
-        # Window Manager & Display Server
+        # Majors
         - swayfx
+        - pamixer
+        - brightnessctl
+
+      #install-weak-deps: false
+  - type: dnf
+    install:
+      packages:
+        # Minors
         - Thunar
         - greetd
         - tuigreet
         - ranger
         - dunst
         - i3blocks
-        - pamixer
-        - brightnessctl
         - gtklock
         - nwg-look
 
-      #install-weak-deps: false
+      install-weak-deps: false

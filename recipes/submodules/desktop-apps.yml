@@ -3,7 +3,6 @@
 modules:
   - type: dnf
     install:
-      install-weak-deps: false
       packages:
         # Visual & GUI Apps
         - steam
@@ -11,4 +10,5 @@ modules:
         - gimp
         - inkscape
         - godot
-        - falkon
+
+      install-weak-deps: false

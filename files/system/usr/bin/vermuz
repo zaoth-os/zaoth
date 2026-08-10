@@ -2,7 +2,85 @@
 
 set -euo pipefail
 
-vermuz_version() {
+function vermuz_log() {
+    local opt="$1"
+    shift
+    case "$opt" in
+        --error) echo "ERROR: $@" >&2;;
+        --warn) echo "WARNING: $@" >&2;;
+        --info) echo "INFO: $@" >&2;;
+    esac
+
+}
+
+function vermuz_usage_mode() {
+    cat << EOF
+Usage: $(basename "$0") [OPTION] [ARGUMENTS...]
+
+Options:
+
+    --help
+        Show this help message.
+
+    --logger <TYPE> <MESSAGE>
+        Send a log message to stderr.
+
+        Types:
+            --error <MESSAGE>
+                Create an error log.
+
+            --warn <MESSAGE>
+                Create a warning log.
+
+            --info <MESSAGE>
+                Create an informational log.
+
+        Examples:
+            $(basename "$0") --logger --info "starting installation"
+            $(basename "$0") --logger --warn "configuration not found"
+            $(basename "$0") --logger --error "installation failed"
+
+    --install <USER> <REPOSITORY> [PROVIDER]
+        Install an application using Git infrastructure.
+
+        Arguments:
+            USER
+                Repository owner or organization.
+
+            REPOSITORY
+                Repository containing the installation files.
+
+            PROVIDER
+                Git provider domain.
+                Default: github.com
+
+        Examples:
+            $(basename "$0") --install user application
+            $(basename "$0") --install user application gitlab.com
+
+    --version-build [OPTION] [VALUE]
+        Build and update the application version.
+
+        Options:
+            stage <VALUE>
+                Set the version stage.
+
+            major <VALUE>
+                Set the major version and reset minor to 0.
+
+            minor <VALUE>
+                Set the minor version.
+
+        Examples:
+            $(basename "$0") --version-build
+            $(basename "$0") --version-build stage a
+            $(basename "$0") --version-build major 2
+            $(basename "$0") --version-build minor 1
+
+EOF
+}
+
+function vermuz_build_version() {
     VERSION_FILE="version.sh"
 
     if [[ -f "$VERSION_FILE" ]]; then
@@ -12,7 +90,6 @@ vermuz_version() {
         V_MAJOR="1"
         V_MINOR="0"
     fi
-
 
     if [[ $# -eq 2 ]]; then
         case "$1" in
@@ -37,17 +114,8 @@ FULL_VERSION="${FULL_VERSION}"
 EOF
     echo "Version: ${FULL_VERSION}"
 }
-vermuz_log() {
-    local opt="$1"
-    shift
-    case "$opt" in
-        --error) echo "ERROR: $@" >&2;;
-        --warn) echo "WARNING: $@" >&2;;
-        --info) echo "INFO: $@" >&2;;
-    esac
 
-}
-vermuz_check() {
+function vermuz_check() {
     local opt="$1"
     shift
     case "$opt" in
@@ -73,7 +141,7 @@ vermuz_check() {
     esac
 }
 
-vermuz_unique_tmp() {
+function vermuz_unique_tmp() {
     local tag="$(echo "$@ $(date '+%Y%m%d%H%M')" | md5sum | tr -d " -")"
     local working="/tmp/vermuz/$tag"
     vermuz_log --info "creating temp working tree..."
@@ -84,7 +152,8 @@ vermuz_unique_tmp() {
     echo "$working"
 }
 
-vermuz_install() {
+function vermuz_install() {
+
     default_provider="github.com"
     repo_user="$1"
     repo_name="$2"
@@ -114,27 +183,64 @@ vermuz_install() {
     if ! vermuz_check --args-missing; then
         return 1
     fi
+    if [[ ! -z "${deep:-}" ]];then
+        vermuz_log --info "starting to copy files from $from_src to $to_src..."
+        mkdir -p "$to_src"
 
-    vermuz_log --info "starting to copy files from $from_src to $to_src..."
-    mkdir -p "$to_src"
-    if ! cp -a "$from_src"/. "$to_src"/; then
-        vermuz_log \
-            --error \
-            "unable to copy files from $from_src to $to_src"
-        return 1
+        if ! echo "testfile" >> "$to_src"/.testfile ; then
+            vermuz_log --error "unable to continue operation.."
+            return 1
+        else
+            if ! cp -a "$from_src"/. "$to_src"/; then
+                vermuz_log \
+                    --error \
+                    "unable to copy files from $from_src to $to_src"
+                return 1
+            else
+                vermuz_log --info "success to deep install files from $from_src to $to_src"
+            fi
+        fi
     else
-        vermuz_log --info "success to copy files from $from_src to $to_src"
+        if exec "${custom:-}";then
+            vermuz_log --info "success to custom install.."
+        else
+            vermuz_log --erro "unable to use custom install -> function missing"
+        fi
     fi
 }
 
-main () {
+function main() {
     local opt="$1"
     shift
 
-    case $opt in
-        --install) vermuz_install $@;;
-        --version-build) vermuz_version $@;;
+    case "$opt" in
+        --help)
+            vermuz_usage_mode
+            ;;
+
+        --logger)
+            vermuz_log "$@"
+            ;;
+
+        --install)
+            vermuz_install "$@"
+            ;;
+
+        --version-build)
+            vermuz_build_version "$@"
+            ;;
+
+        *)
+            vermuz_log --error "unknown option -> '$opt'"
+            echo
+            vermuz_usage_mode
+            return 1
+            ;;
     esac
 }
 
-main "$@"
+if [[ ! -z ${1:-} ]];then
+    main "$@"
+else
+    vermuz_usage_mode
+fi
