@@ -22,5 +22,6 @@ modules:
         - i3blocks
         - gtklock
         - nwg-look
+        - librewolf
 
       install-weak-deps: false

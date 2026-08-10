@@ -3,6 +3,11 @@
 modules:
   - type: dnf
     repos:
+      nonfree: negativo17
+
+      files:
+        - https://repo.librewolf.net/librewolf.repo
+
       copr:
         - swayfx/swayfx
         - tofik/nwg-shell
