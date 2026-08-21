@@ -2,7 +2,7 @@
 vt = 1
 
 [default_session]
-command = "/usr/bin/tuigreet --time --remember --user-menu --cmd 'sh -c \"XDG_CONFIG_HOME=/dev/null sway -c /etc/sway/config\"'"
+command = "/usr/bin/tuigreet --time --remember --user-menu "
 
 user = "greeter"
 

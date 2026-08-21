@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+
+modules:
+  - type: dnf
+    install:
+      packages:
+        # Majors
+        - niri
+        - noctalia
+      #install-weak-deps: false
+  - type: dnf
+    install:
+      packages:
+        # Minors
+        - nemo
+        - greetd
+        - tuigreet
+        - librewolf
+
+      install-weak-deps: false

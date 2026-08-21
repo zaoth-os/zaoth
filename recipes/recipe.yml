@@ -13,5 +13,5 @@ modules:
   - from-file: submodules/devel-utils.yml
   - from-file: submodules/desktop-apps.yml
   - from-file: submodules/devices-setup.yml
-  - from-file: submodules/sway-setup.yml
+  - from-file: submodules/niri-setup.yml
   - from-file: submodules/endown-setup.yml
