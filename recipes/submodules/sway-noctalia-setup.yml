@@ -4,13 +4,15 @@ modules:
   - type: dnf
     install:
       packages:
-        # Visual & GUI Apps
-        - steam
-        - zed
-        - gimp
-        - inkscape
-        - godot
-        - nemo
-        - librewolf
+        # Majors
+        - swayfx
+        - noctalia
+
+      #install-weak-deps: false
+  - type: dnf
+    install:
+      packages:
+        # Minors
+        - gtklock
 
       install-weak-deps: false

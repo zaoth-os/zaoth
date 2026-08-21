@@ -9,9 +9,9 @@ modules:
         - https://repo.librewolf.net/librewolf.repo
 
       copr:
-        #- swayfx/swayfx
-        #- tofik/nwg-shell
-        #- lihaohong/yazi
+        - swayfx/swayfx
+        - tofik/nwg-shell
+        - lihaohong/yazi
         - che/zed
         - zeno/scrcpy
         - atim/nushell

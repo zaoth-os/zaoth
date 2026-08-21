@@ -1,16 +1,15 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
 
 modules:
+
   - type: dnf
     install:
       packages:
-        # Visual & GUI Apps
-        - steam
-        - zed
-        - gimp
-        - inkscape
-        - godot
-        - nemo
-        - librewolf
-
+        - greetd
+        - tuigreet
       install-weak-deps: false
+
+  - type: systemd
+    user:
+      enabled:
+        - greetd

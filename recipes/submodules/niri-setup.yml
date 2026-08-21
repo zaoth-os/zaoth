@@ -7,14 +7,6 @@ modules:
         # Majors
         - niri
         - noctalia
-      #install-weak-deps: false
-  - type: dnf
-    install:
-      packages:
-        # Minors
-        - nemo
-        - greetd
-        - tuigreet
-        - librewolf
+        - alacritty
 
       install-weak-deps: false

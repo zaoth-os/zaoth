@@ -14,14 +14,10 @@ modules:
     install:
       packages:
         # Minors
-        - Thunar
-        - greetd
-        - tuigreet
         - ranger
         - dunst
         - i3blocks
         - gtklock
         - nwg-look
-        - librewolf
 
       install-weak-deps: false
