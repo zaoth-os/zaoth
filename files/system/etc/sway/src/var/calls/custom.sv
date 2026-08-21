@@ -1,6 +1,6 @@
 set {
     $open_application_A exec which NullApp
-    $open_application_B exec falkon
+    $open_application_B exec librewolf
     $open_application_C exec zed
     $open_application_D exec which NullApp
     $open_application_E exec which NullApp
