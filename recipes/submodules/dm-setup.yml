@@ -12,4 +12,4 @@ modules:
   - type: systemd
     user:
       enabled:
-        - greetd
+        - display-manager
