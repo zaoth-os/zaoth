@@ -8,8 +8,3 @@ modules:
         - greetd
         - tuigreet
       install-weak-deps: false
-
-  - type: systemd
-    system:
-      enabled:
-        - display-manager
