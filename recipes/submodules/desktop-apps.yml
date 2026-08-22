@@ -10,7 +10,7 @@ modules:
         - gimp
         - inkscape
         - godot
-        - nemo
+        - Thunar
         - librewolf
 
       install-weak-deps: false
