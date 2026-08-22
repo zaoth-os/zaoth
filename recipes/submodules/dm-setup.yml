@@ -10,6 +10,6 @@ modules:
       install-weak-deps: false
 
   - type: systemd
-    user:
+    system:
       enabled:
         - display-manager
