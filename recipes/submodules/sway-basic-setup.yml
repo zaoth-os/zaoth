@@ -7,7 +7,7 @@ modules:
         # Majors
         - swayfx
         - pamixer
-        - noctalia
+
         - brightnessctl
 
       #install-weak-deps: false
@@ -15,10 +15,11 @@ modules:
     install:
       packages:
         # Minors
+        - noctalia
         - ranger
-        - dunst
-        - i3blocks
+        #- dunst
+        #- i3blocks
         - gtklock
-        - nwg-look
+        #- nwg-look
 
       install-weak-deps: false
