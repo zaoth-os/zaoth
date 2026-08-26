@@ -10,3 +10,5 @@ modules:
         - foot
         - kitty
         - Thunar
+
+      install-weak-deps: false
