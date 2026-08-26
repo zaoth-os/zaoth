@@ -10,5 +10,11 @@ modules:
         - foot
         - kitty
         - Thunar
+        - python3-dbus-next
+        - python3-i3ipc
+        - python3-tenacity
+        - python3-xlib
+        - sway-systemd
+        - xdg-desktop-portal-wlr
 
       install-weak-deps: false
