@@ -1,1 +1,1 @@
-include /usr/libexec/sway/src/*.conf
+include ./src/*.conf
