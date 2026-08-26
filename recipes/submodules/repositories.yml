@@ -9,6 +9,7 @@ modules:
         - https://repo.librewolf.net/librewolf.repo
 
       copr:
+        - fyllus/noctalia-greeter
         - swayfx/swayfx
         - tofik/nwg-shell
         - lihaohong/yazi
