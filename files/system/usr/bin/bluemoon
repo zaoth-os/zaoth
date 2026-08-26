@@ -12,10 +12,6 @@ Core Modules (Direct or via 'get'/'set'):
   wifi                      Wireless network interface status and SSID.
   idle-toggle               Enable/Disable swayidle background process.
 
-Legacy Actions (Optional):
-  get <module> [options]    Fetch system information.
-  set <module>              Execute system configurations or actions.
-
 Information:
   Use '$(basename "$0") <module> --help' for details on a specific module.
 EOF
@@ -162,6 +158,8 @@ EOF
             ;;
     esac
 }
+
+
 module-backlight() {
     case "$1" in
         --help)
@@ -196,6 +194,7 @@ EOF
             ;;
     esac
 }
+
 module-wifi() {
     if [[ "$1" == "--help" ]]; then
         cat << EOF
@@ -289,11 +288,6 @@ idle-toggle () {
 main () {
     local token="$1"
     shift
-
-    if [[ "$token" == "get" || "$token" == "set" ]]; then
-        token="$1"
-        shift
-    fi
 
     case "$token" in
         time)        module-time "$@" ;;

@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+PREFFIX=""
+
+if (noctalia 2> /dev/null) ;then
+    PREFFIX="noctalia_msg"
+elif ((brightnessctl && pamixer) 2> /dev/null);then
+    PREFFIX="default_ctl"
+else
+    return 1
+fi
+
+function main() {
+    local action="$1"
+    shift
+    if (( $PREFFIX == "noctalia_msg" )); then
+        noctalia msg "$action" $@
+    else
+        case "$action" in
+            volume-?*)
+                local arg="${action#*-}"
+                case "$arg" in
+                    mute)
+                    pamixer -t
+                    ;;
+                    up)
+                    pamixer -ui "${1:-2}"
+                    ;;
+                    down)
+                    pamixer -ud "${1:-2}"
+                    ;;
+                esac
+                local value=$(pamixer --get-volume)
+                notify-send -e -h string:x-canonical-private-synchronous:volume \
+                -h "int:value:$value" -i audio-volume-high-symbolic -t 800 "Volume: ${value}%"
+                ;;
+
+            brightness-?*)
+                local arg="${action#*-}"
+                case "$arg" in
+                    up)
+                        brightnessctl set "+${1}%"
+                       ;;
+                    down)
+                       brightnessctl set "${1}%-"
+                       ;;
+                esac
+                local value="$(brightnessctl --percentage get)"
+                notify-send -e -h string:x-canonical-private-synchronous:brightness \
+                -h "int:value:$value" -i display-brightness-symbolic -t 800 "Brightness: ${value}%"
+                ;;
+        esac
+    fi
+
+
+}
+
+main "$@"

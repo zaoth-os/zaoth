@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+xdg-user-dirs-update
+
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_DESKTOP="${XDG_SESSION_DESKTOP:-sway}"
+export XDG_SESSION_TYPE=wayland

@@ -7,15 +7,15 @@ set {
 
 	$__MENU_ARGS -i -f "$font_family $font_size" -N "$wmenu_bg" -n "$wmenu_fg" -S "$wmenu_BG" -s "$wmenu_FG"
 
-	$__WMENU $__SWAY_FUZZY apps $__MENU_ARGS
+	$__WMENU $__SWAY_FUZZY launcher
 
-	$__POFF $__SWAY_FUZZY power $__MENU_ARGS
+	$__POFF $__SWAY_FUZZY power
 
-	$__SCRATCH $__SWAY_FUZZY scratchpad $__MENU_ARGS
+	$__SCRATCH $__SWAY_FUZZY scratchpad
 
-	$__SCREENSHOT $__SWAY_FUZZY image $__MENU_ARGS
+	$__SCREENSHOT $__SWAY_FUZZY screenshot
 
-	$__BGSELEC bluewall $WALLPAPERS \
+	$__BGSELECOLD bluewall $WALLPAPERS \
 		"bg+:$wmenu_BG" \
 	    "fg+:$wmenu_bg" \
 	    "bg:-1" \
@@ -26,6 +26,8 @@ set {
 	    "marker:$focused_border" \
 	    "border:$unfocused_border" \
 	    "header:$focused_border"
+
+    $__BGSELEC bluemenu wallpaper
     $BASH   exec bash -ic
 
     # DEFAULT POWER MENU CONFIG

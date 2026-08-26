@@ -1,22 +1,34 @@
 # SET DEFAULT COLORS BEFORE TO AVOID ERRORS OF NON-FILE OR INVALID VAR
 set {
-    $destructive_color                  #e78284
-    $destructive_bg_color               #e78284
-    $destructive_fg_color               #c6d0f5
-    $theme_selected_bg_color            #ca9ee6
-    $theme_selected_fg_color            #303446
-    $theme_unfocused_bg_color           #303446
-    $theme_unfocused_fg_color           #c6d0f5
-    $theme_unfocused_base_color         #292c3c
-    $accent_color                       #85c1dc
-    $accent_bg_color                    #85c1dc
-    $accent_fg_color                    #303446
+     $primary            #67b7e4
+     $on_primary         #182025
+     $secondary          #5c6cd6
+     $tertiary           #8b66cc
+     $error              #fd4663
+     $surface            #11222c
+     $on_surface         #f2f2f3
+     $on_surface_variant #afb4b6
+     $outline            #616c71
 }
-
-# EXECUTE THEME UPDATE FROM GTK AND CREATE CUSTOM COLOR FROM IT
 
 include $HOME/.config/sway/theme/*.color
 
+set {
+    $destructive_color           $error
+    $destructive_bg_color        $error
+    $destructive_fg_color        $on_surface
+
+    $theme_selected_bg_color     $primary
+    $theme_selected_fg_color     $on_primary
+
+    $theme_unfocused_bg_color    $surface
+    $theme_unfocused_fg_color    $on_surface
+    $theme_unfocused_base_color  $surface
+
+    $accent_color                $secondary
+    $accent_bg_color             $secondary
+    $accent_fg_color             $on_primary
+}
 
 set {
     $focused_inative_border             $destructive_color
@@ -64,9 +76,7 @@ set  {
 	$bar_wsu_border 					$urgent_border
 	$bar_wsu_background					$urgent_background
 	$bar_wsu_text	 					$urgent_text
-
-
-	}
+}
 
 set {
 	$wmenu_bg $bar_wsi_background

@@ -6,20 +6,7 @@ modules:
       packages:
         # Majors
         - swayfx
-        - pamixer
-
-        - brightnessctl
-
-      #install-weak-deps: false
-  - type: dnf
-    install:
-      packages:
-        # Minors
         - noctalia
-        - ranger
-        #- dunst
-        #- i3blocks
-        - gtklock
-        #- nwg-look
-
-      install-weak-deps: false
+        - foot
+        - kitty
+        - Thunar
