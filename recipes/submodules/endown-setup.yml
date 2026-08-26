@@ -6,4 +6,8 @@ modules:
       enabled:
         - greetd
   # Initramfs rebuild
+  - type: script
+    snippets:
+        - "vermuz --install zaoth-os zaoth-share"
+        - "vermuz --install zaoth-os zaoth-lib"
   - type: initramfs

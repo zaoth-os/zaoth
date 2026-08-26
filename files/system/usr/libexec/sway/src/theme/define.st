@@ -1,7 +1,7 @@
 set {
     $window_gap_inner   5
     $window_gap_outer   5
-    $window_border_size 2
+    $window_border_size 3
 
     $bar_height 25
     $bar_position top

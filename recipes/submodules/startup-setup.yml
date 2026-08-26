@@ -5,8 +5,3 @@ modules:
     files:
       - source: system
         destination: /
-
-  - type: script
-    snippets:
-      - "vermuz --install zaoth-os zaoth-share"
-      - "vermuz --install zaoth-os zaoth-lib"

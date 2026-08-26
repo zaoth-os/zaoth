@@ -1,13 +1,10 @@
 
-SWAYDIR="/etc/sway"
-SCRIPTS="/usr/libexec/sway/scripts"
+SWAYDIR="/usr/libexec/sway"
+
+SCRIPTS="$SWAYDIR/scripts"
 WALLPAPERS="$HOME/Pictures/wallpaper"
 BASHLIB="/usr/lib/bash"
 
 BASHRC="$BASHLIB/bashrc"
-
-DEFMENUS="/usr/share/menus"
-USERMENUS="$HOME/.menus"
-
 
 PATH="$HOME/.local/bin:$PATH"

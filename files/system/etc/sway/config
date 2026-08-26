@@ -1,5 +1,1 @@
-
-include ./src/autostart.conf
-include ./src/swaybar.conf
-include ./src/theming.conf
-include ./src/keymapping.conf
+include /usr/libexec/sway/src/*.conf
