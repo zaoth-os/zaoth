@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+PREFIX=""
+
+if command -v noctalia >/dev/null 2>&1; then
+    PREFIX="noctalia_msg"
+elif command -v brightnessctl >/dev/null 2>&1 &&
+     command -v pamixer >/dev/null 2>&1; then
+    PREFIX="default_ctl"
+else
+    exit 1
+fi
+
+main() {
+    local action="${1:-}"
+    shift || true
+
+    if [[ "$PREFIX" == "noctalia_msg" ]]; then
+        noctalia msg "$action" "$@"
+        return
+    fi
+
+    case "$action" in
+        volume-*)
+            local arg="${action#volume-}"
+
+            case "$arg" in
+                mute)
+                    pamixer -t
+                    ;;
+                up)
+                    pamixer -ui "${1:-2}"
+                    ;;
+                down)
+                    pamixer -ud "${1:-2}"
+                    ;;
+                *)
+                    return 1
+                    ;;
+            esac
+
+            local value
+            value="$(pamixer --get-volume)"
+
+            notify-send \
+                -e \
+                -h string:x-canonical-private-synchronous:volume \
+                -h "int:value:$value" \
+                -i audio-volume-high-symbolic \
+                -t 800 \
+                "Volume: ${value}%"
+            ;;
+
+        brightness-*)
+            local arg="${action#brightness-}"
+            local amount="${1:-2}"
+
+            case "$arg" in
+                up)
+                    brightnessctl set "${amount}%+"
+                    ;;
+                down)
+                    brightnessctl set "${amount}%-"
+                    ;;
+                *)
+                    return 1
+                    ;;
+            esac
+
+            local value
+            value="$(brightnessctl -m | awk -F, '{gsub(/%/, "", $4); print $4}')"
+
+            notify-send \
+                -e \
+                -h string:x-canonical-private-synchronous:brightness \
+                -h "int:value:$value" \
+                -i display-brightness-symbolic \
+                -t 800 \
+                "Brightness: ${value}%"
+            ;;
+
+        *)
+            return 1
+            ;;
+    esac
+}
+
+main "$@"

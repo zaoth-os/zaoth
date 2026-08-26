@@ -25,8 +25,7 @@ floating_modifier $SUPER normal
 
 set {
     $print_mode_default             Print
-    $print_mode_ctrl                Print+Ctrl
-    $print_mode_alt                 Print+$ALT_LEFT
+    $print_mode_ctrl                Ctrl+Print
 }
 
 #CUSTOM KEYMAP OVERRIDE

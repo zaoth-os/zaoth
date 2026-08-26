@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# This script is the front-end menu helper using WMENU.
+# It handles different modes (apps, screenshot, powermenu, scratchpad)
+# and forwards arguments directly to wmenu.
+
+
+
+mode-scratchpad-windows () {
+    swaymsg -t get_tree | jq -r '
+        .. | select(.name? == "__i3_scratch") | recurse(.nodes[], .floating_nodes[]) | select(.type? == "floating_con") | "\(.id) - \(.name)"
+    ' | sed '/^\s*$/d'
+}
+
+choosen=$(mode-scratchpad-windows | noctalia dmenu -p "Restore from scratchpad")
+[[ -z "$choosen" ]] && return 0
+
+local win_id="${choosen%% *}"
+if [[ "$win_id" =~ ^[0-9]+$ ]]; then
+    swaymsg "[con_id=$win_id] scratchpad show, floating toggle"
+fi

@@ -3,26 +3,29 @@ include $SWAYDIR/src/var/calls/helper.sv
 set {
 
     $DEFAULT_TERM   	exec footclient --app-id=Terminal --title=Terminal
-	$DEFAULT_MENU  	    exec $__WMENU
     $DEFAULT_FILES  	exec Thunar
     $DEFAULT_RELOAD 	exec swaymsg reload
-    $DEFAULT_WALLPAPER 	exec $__BGSELEC
+	$DEFAULT_MENU  	    exec noctalia msg panel-open launcher
+	$DEFAULT_POWER_OFF  exec noctalia msg panel-open session
+    $DEFAULT_WALLPAPER 	exec noctalia msg panel-open wallpaper
 }
 
 set {
-	$DEFAULT_VOLUME_RAISE exec bluectl volume-up 2
-	$DEFAULT_VOLUME_LOWER exec bluectl volume-down 2
-	$DEFAULT_VOLUME_MUTE exec bluectl volume-mute
+	$DEFAULT_VOLUME_RAISE exec noctalia msg volume-up 2
+	$DEFAULT_VOLUME_LOWER exec noctalia msg volume-down 2
+	$DEFAULT_VOLUME_MUTE exec noctalia msg volume-mute
 }
 
 set {
-	$DEFAULT_LIGHT_RAISE  exec bluectl brightness-up 2
-    $DEFAULT_LIGHT_LOWER  exec bluectl brightness-down 2
+	$DEFAULT_LIGHT_RAISE  exec noctalia msg brightness-up 2
+    $DEFAULT_LIGHT_LOWER  exec noctalia msg brightness-down 2
     }
 
 set {
-    $DEFAULT_POWER_OFF    exec $__POFF
+
     $DEFAULT_LOCKSCREEN   exec noctalia msg session lock
-    $DEFAULT_PRINT_NORM   exec $__SCREENSHOT
-    $DEFAULT_SCRATCH_GET  exec $__SCRATCH
-   }
+    $DEFAULT_PRINT_NORM   exec noctalia msg screenshot-fullscreen
+    $DEFAULT_PRINT_REGION exec noctalia msg screenshot-region
+    $DEFAULT_SCRATCH_GET  exec footclient --app-id=Scratchpad --title=Scratchpad -e scratchpad
+
+}
