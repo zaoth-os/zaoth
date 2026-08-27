@@ -7,6 +7,7 @@ modules:
         # Majors
         - swayfx
         - noctalia
+        - noctalia-greeter
         - foot
         - kitty
         - Thunar
@@ -15,6 +16,9 @@ modules:
         - python3-tenacity
         - python3-xlib
         - sway-systemd
+        - xdg-utils
+        - xdg-user-dirs
+        - xdg-user-dirs-gtk
         - xdg-desktop-portal-wlr
 
       install-weak-deps: false

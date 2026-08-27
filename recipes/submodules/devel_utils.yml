@@ -4,7 +4,8 @@ modules:
   - type: dnf
     install:
       packages:
-         #Core Dev & Container Stack
+
+        #core dev & container stack
         - git
         - podman-compose
         - podman

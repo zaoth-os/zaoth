@@ -10,7 +10,6 @@ Core Modules (Direct or via 'get'/'set'):
   cpu                       Processor temperature and load.
   battery                   Battery level and status.
   wifi                      Wireless network interface status and SSID.
-  idle-toggle               Enable/Disable swayidle background process.
 
 Information:
   Use '$(basename "$0") <module> --help' for details on a specific module.
@@ -263,28 +262,6 @@ EOF
     esac
 }
 
-idle-toggle () {
-    local stage1=300 stage2=600 stage3=900
-    local set_lock="gtklock -d"
-    local set_display_on="(swaymsg 'output * power on' && brightnessctl set 5%) 2>/dev/null "
-    local set_display_off="(brightnessctl -s && brightnessctl set 0% && swaymsg 'output * power off') 2>/dev/null"
-
-    if pgrep -f "swayidle" >/dev/null; then
-        pkill -f swayidle
-        notify-send "SwayIdle" "Idle/Lock disabled" -t 600
-    else
-        local swayidle_args=(
-            timeout "$stage1" "(brightnessctl -s && brightnessctl set 1%) 2>/dev/null"
-            resume "$set_display_on"
-            timeout "$stage2" "$set_lock"
-            timeout "$stage3" "$set_display_off"
-            before-sleep "$set_lock"
-        )
-        (swayidle -w "${swayidle_args[@]}") &
-        notify-send "SwayIdle" "Idle/Lock enabled" -t 600
-    fi
-}
-
 main () {
     local token="$1"
     shift
@@ -296,7 +273,6 @@ main () {
         battery)     module-battery "$@" ;;
         wifi)        module-wifi "$@" ;;
         backlight)   module-backlight "$@" ;;
-        idle-toggle) idle-toggle ;;
         --help|*)    show-main-help ;;
     esac
 }

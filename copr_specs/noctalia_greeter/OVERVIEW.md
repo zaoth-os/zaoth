@@ -1,6 +1,6 @@
 # Noctalia Greeter — Fedora Packaging
 
-[![Copr build status](https://copr.fedorainfracloud.org/coprs/fyllus/noctalia-greeter/package/noctalia-greeter/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/fyllus/noctalia-greeter/package/noctalia-greeter/)
+[![Copr build status](https://copr.fedorainfracloud.org/coprs/fyllus/zaoth/package/noctalia-greeter/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/fyllus/zaoth/package/noctalia-greeter/)
 
 Fedora RPM packaging for **Noctalia Greeter**, a minimal login greeter for [`greetd`](https://github.com/kennylevinsen/greetd) designed to match the visual language of **Noctalia Shell**.
 

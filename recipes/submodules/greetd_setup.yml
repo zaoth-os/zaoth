@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+
+modules:
+
+  # install pure greetd
+  - type: dnf
+    install:
+      packages:
+        - greetd
+
+      install-weak-deps: false
+
+  # create primary greetd config
+  - type: script
+    snippets:
+        - "mkdir -p /etc/greetd"
+        - |
+          echo '[terminal]' > /etc/greetd/config.toml
+          echo 'vt = 1' >> /etc/greetd/config.toml
+          echo '[default_session]' >> /etc/greetd/config.toml
+          echo 'command = "/usr/local/bin/noctalia-greeter-session"' >> /etc/greetd/config.toml
+          echo 'user = "greeter"' >> /etc/greetd/config.toml
+
+  # enable greetd service
+  - type: systemd
+    system:
+      enabled:
+        - greetd

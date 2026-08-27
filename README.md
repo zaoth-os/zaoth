@@ -14,18 +14,6 @@ This image is an independent, personal project designed to be lightweight, pragm
 
 ---
 
-## Key Features
-
-* **Minimalist TWM Stack:** Pre-configured Sway environment leveraging resource-efficient tools like `i3blocks` and `wmenu`, alongside custom scripts located in `/usr/bin`.
-
-* **Modular Configuration Architecture:** Completely decoupled keybindings, system calls, and theme variables to prevent system breakage and allow safe, painless user overrides.
-
-* **Integrated CLI Orchestration:** Built-in shell-based tools featuring custom fuzzy finders (`bluemenu`, `bluewall`) for application execution, scratchpads, interactive wallpaper selection, and power management.
-
-* **Atomic Reliability:** Built via BlueBuild, ensuring immutable root-filesystem rollbacks, seamless updates, and container-native delivery.
-
----
-
 ## Installation
 
 To rebase an existing Fedora Atomic (e.g., Silverblue, Kinoite, Sway Spin) installation to the latest Bluehat build, execute the two-step verification process below:

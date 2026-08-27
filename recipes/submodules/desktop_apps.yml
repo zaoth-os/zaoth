@@ -4,7 +4,8 @@ modules:
   - type: dnf
     install:
       packages:
-        # Visual & GUI Apps
+
+        # visual & GUI apps
         - steam
         - zed
         - gimp

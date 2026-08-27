@@ -7,13 +7,13 @@ base-image: ghcr.io/ublue-os/base-main
 image-version: latest
 
 modules:
-  - from-file: submodules/startup-setup.yml
+  - from-file: submodules/initialize.yml
   - from-file: submodules/repositories.yml
-  - from-file: submodules/terminal-utils.yml
-  - from-file: submodules/devel-utils.yml
-  - from-file: submodules/desktop-apps.yml
-  - from-file: submodules/devices-setup.yml
-  - from-file: submodules/proprietary.yml
-  - from-file: submodules/dm-setup.yml
-  - from-file: submodules/sway-basic-setup.yml
-  - from-file: submodules/endown-setup.yml
+  - from-file: submodules/terminal_utils.yml
+  - from-file: submodules/devel_utils.yml
+  - from-file: submodules/desktop_apps.yml
+  - from-file: submodules/devices_setup.yml
+  - from-file: submodules/proprietary_drivers.yml
+  - from-file: submodules/greetd_setup.yml
+  - from-file: submodules/sway_setup.yml
+  - from-file: submodules/finish.yml

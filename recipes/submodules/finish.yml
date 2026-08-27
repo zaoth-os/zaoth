@@ -1,13 +1,12 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
 
 modules:
-  - type: systemd
-    system:
-      enabled:
-        - greetd
-  # Initramfs rebuild
+
+  # install configs
   - type: script
     snippets:
         - "vermuz --install zaoth-os zaoth-share"
         - "vermuz --install zaoth-os zaoth-lib"
+
+  # rebuild initramfs
   - type: initramfs

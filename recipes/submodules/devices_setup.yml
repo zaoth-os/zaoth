@@ -4,9 +4,11 @@ modules:
   - type: dnf
     install:
       packages:
-         # Core LXQt
+
+        # policy kit
         - lxqt-policykit
-        # Network & Hardware Management
+
+        # network & hardware Management
         - NetworkManager-wifi
         - iw
         - bluez
