@@ -1,4 +1,4 @@
-include ./modifiers.sk
+include $SWAYDIR/src/bind/modifiers.sk
 
 # DEFAULT KEYMAP
 set {
@@ -20,6 +20,7 @@ set {
     $call_application_q     $SUPER+q
     $call_application_r     $SUPER+r
     $call_application_s     $SUPER+s
+    $call_application_t     $SUPER+t
     $call_application_u     $SUPER+u
     $call_application_v     $SUPER+v
     $call_application_x     $SUPER+x

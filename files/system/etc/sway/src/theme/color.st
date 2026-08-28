@@ -30,6 +30,7 @@ set {
     $accent_fg_color             $on_primary
 }
 
+# main colors to sway using imported colors from noctalia or gtk
 set {
     $focused_inative_border             $destructive_color
     $focused_inative_background         $destructive_bg_color
@@ -56,6 +57,7 @@ set {
     $urgent_child_border                $accent_color
 }
 
+# here config the colors to swaybar
 set  {
 	$bar_background						$focused_text
 	$bar_statusline						$focused_background
@@ -78,6 +80,7 @@ set  {
 	$bar_wsu_text	 					$urgent_text
 }
 
+# this colors to use with wmenu applications..
 set {
 	$wmenu_bg $bar_wsi_background
 	$wmenu_fg $bar_wsi_text

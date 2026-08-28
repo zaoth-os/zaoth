@@ -1,7 +1,8 @@
 
-SWAYDIR="/usr/libexec/sway"
+SWAYDIR="/etc/sway"
+SWAYUSR="/usr/libexec/sway"
 
-SCRIPTS="$SWAYDIR/scripts"
+SCRIPTS="$SWAYUSR/scripts"
 WALLPAPERS="$HOME/Pictures/wallpaper"
 BASHLIB="/usr/lib/bash"
 

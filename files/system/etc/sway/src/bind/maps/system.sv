@@ -1,12 +1,13 @@
-include $SWAYDIR/src/var/calls/helper.sv
+include $SWAYDIR/src/var/helpers.sv
 
 set {
 
     $DEFAULT_TERM   	exec footclient --app-id=Terminal --title=Terminal
     $DEFAULT_FILES  	exec Thunar
+    $DEFAULT_BROWSER    exec librewolf
+
     $DEFAULT_RELOAD 	exec swaymsg reload
 	$DEFAULT_MENU  	    exec noctalia msg panel-open launcher
-	$DEFAULT_POWER_OFF  exec noctalia msg panel-open session
     $DEFAULT_WALLPAPER 	exec noctalia msg panel-open wallpaper
 }
 
@@ -19,13 +20,13 @@ set {
 set {
 	$DEFAULT_LIGHT_RAISE  exec noctalia msg brightness-up 2
     $DEFAULT_LIGHT_LOWER  exec noctalia msg brightness-down 2
-    }
+}
 
 set {
-
+	$DEFAULT_POWER_OFF    exec noctalia msg panel-open session
     $DEFAULT_LOCKSCREEN   exec noctalia msg session lock
     $DEFAULT_PRINT_NORM   exec noctalia msg screenshot-fullscreen
     $DEFAULT_PRINT_REGION exec noctalia msg screenshot-region
-    $DEFAULT_SCRATCH_GET  exec footclient --app-id=Scratchpad --title=Scratchpad -e scratchpad
-
 }
+
+include $HOME/.config/sway/calls/system.kb

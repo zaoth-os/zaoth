@@ -1,5 +1,5 @@
 # SwayFX config options
-# Remove .st from this file if you dont use SwayFX
+# Keep this without extention if you're not using swayfx, or put .st if it's swayfx.
 
 set {
     $swayfx_window_opacity 0.9

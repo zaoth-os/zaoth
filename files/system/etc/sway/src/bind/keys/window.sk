@@ -1,4 +1,4 @@
-include ./modifiers.sk
+include $SWAYDIR/src/bind/modifiers.sk
 
 # DEFAULT KEYMAP
 set {

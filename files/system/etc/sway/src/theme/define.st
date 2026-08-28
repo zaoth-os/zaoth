@@ -1,3 +1,5 @@
+# Config to sway fenitions as well..
+
 set {
     $window_gap_inner   5
     $window_gap_outer   5

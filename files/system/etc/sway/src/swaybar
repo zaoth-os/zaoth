@@ -1,5 +1,8 @@
+# If you are using a setup with a separate bar, leave this file without an extension.
+
 include ./theme/color.st
 include ./theme/define.st
+
 bar {
     swaybar_command swaybar
     status_command i3blocks
