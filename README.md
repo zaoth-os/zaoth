@@ -63,15 +63,15 @@ Zaoth
 │
 └── copr_specs/
      │
-     ├── README.md
+     ├── COPRS.md
      │
      ├── noctalia_greeter/
      │    ├── main.spec
-     │    └── README.md
+     │    └── OVERVIEW.md
      │
      └── other_packages/
           ├── main.spec
-          └── README.md
+          └── OVERVIEW.md
 ```
 
 The goal of this structure is to keep the packaging process organized, documented, and centralized within the Zaoth project, allowing new packages to be added and maintained without the need to create a separate repository for each piece of software.
