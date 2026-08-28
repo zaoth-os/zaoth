@@ -45,7 +45,7 @@ Each package has its own directory containing the files required for its packagi
 For more detailed information about the organization and operation of the packaging system, see:
 
 ```text
-copr_specs/README.md
+copr_specs/COPRS.md
 ```
 
 It is also recommended to consult the documentation available inside each package directory, as some projects may have specific requirements, dependencies, limitations, or adjustments.
