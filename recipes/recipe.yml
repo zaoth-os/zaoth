@@ -12,7 +12,7 @@ modules:
   - from-file: submodules/terminal_utils.yml
   - from-file: submodules/devel_utils.yml
   - from-file: submodules/desktop_apps.yml
-  - from-file: submodules/devices_setup.yml
+  #- from-file: submodules/devices_setup.yml
   - from-file: submodules/proprietary_drivers.yml
   - from-file: submodules/greetd_setup.yml
   - from-file: submodules/sway_setup.yml

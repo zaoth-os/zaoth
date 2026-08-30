@@ -6,7 +6,7 @@ modules:
       packages:
 
         # policy kit
-        - lxqt-policykit
+        #- lxqt-policykit
 
         # network & hardware Management
         - NetworkManager-wifi
