@@ -84,6 +84,7 @@ find %{buildroot} -type f -o -type l | sort
 %{_bindir}/noctalia-greeter
 %{_bindir}/noctalia-greeter-apply-appearance
 %{_bindir}/noctalia-greeter-session
+%{_bindir}/noctalia-greeter-xsession
 %{_bindir}/noctalia-greeter-print-greetd-config
 %{_bindir}/noctalia-greeter-compositor
 
