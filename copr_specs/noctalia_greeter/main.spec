@@ -1,5 +1,5 @@
 Name:           noctalia-greeter
-Version:        1.5.0
+Version:        1.6.0
 Release:        1%{?dist}
 Summary:        Minimal greetd login greeter with a bundled wlroots compositor
 
